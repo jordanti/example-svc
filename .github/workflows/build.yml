@@ -16,5 +16,5 @@ jobs:
       - name: Run linters
         uses: golangci/golanci-lint-action@v2
         with:
-          - version: v1.33
+          version: v1.33
 
