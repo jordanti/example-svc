@@ -33,21 +33,21 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 	if len(sx) == 0 || len(sy) == 0 {
 		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte("You must provide x and y values"))
+		_, _ = w.Write([]byte("You must provide x and y values"))
 		return
 	}
 
 	x, err := strconv.Atoi(sx)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte("x value is not an int"))
+		_, _ = w.Write([]byte("x value is not an int"))
 		return
 	}
 
 	y, err := strconv.Atoi(sy)
 	if err != nil {
 		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte("y value is not an int"))
+		_, _ = w.Write([]byte("y value is not an int"))
 		return
 	}
 
@@ -59,7 +59,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 	b, _ := json.Marshal(msg)
 	w.Header().Add("Content-Type", "application/json")
-	w.Write(b)
+	_, _ = w.Write(b)
 }
 
 func sum(x int, y int) int {
